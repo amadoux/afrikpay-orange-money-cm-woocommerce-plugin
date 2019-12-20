@@ -7,18 +7,15 @@ class WC_Gateway_OM extends WC_Payment_Gateway {}
 ?>
 <form id="dataFormOM" action="<?php echo $_GET["urlafrikpay"]; ?>" method="post" target="_top">
 <input type="hidden" name="provider" value="orange_money_cm"/>
-<input type="hidden" name="type" value="cashout"/>
-<input type="hidden" name="quantity" value="<?php echo $_GET["quantity_1"]; ?>"/>
 <input type="hidden" name="merchantid" value="<?php echo $_GET["merchantid"]; ?>" />
 <input type="hidden" name="brand" value="Mon Panier" />
 <input type="hidden" name="currency" value="<?php echo get_woocommerce_currency(); ?>" /> 
 <input type="hidden" name="amount" value="<?php echo $_GET["totalamount"] ?>" />
 <input type="hidden" name="phonenumber" value="" />
 <input type="hidden" name="purchaseref" value="<?php $json = json_decode($_GET["custom"], true); echo $json['order_id']; ?>" />
-<input type="hidden" name="description" value="Description" />
-<input type="hidden" name="returnurl" value="<?php echo $_GET["return"]; ?>" />
+<input type="hidden" name="accepturl" value="<?php echo $_GET["return"]; ?>" />
 <input type="hidden" name="cancelurl" value="<?php echo $_GET["cancel_return"]; ?>" />
-<input type="hidden" name="accepturl" value="<?php echo $_GET["notify_url"]; ?>" />
+<input type="hidden" name="declineurl" value="<?php echo $_GET["cancel_return"]; ?>" />
 <input type="hidden" name="text" value="<?php echo $_GET["text"]; ?>" />
 <input type="hidden" name="language" value="fr" /> 
 
@@ -101,7 +98,11 @@ class WC_Gateway_OM extends WC_Payment_Gateway {
 	}
 
     function pay( $order_id ) {
-        $order_id = $_GET["purchaseref"];
+		$order_id = $_GET["purchaseref"];
+		if($order_id == null){
+			echo "Purhaseref missing";
+			exit;
+		}
         $order = wc_get_order($order_id);
         $status = $_GET["status"];
         switch ( $status ) {
@@ -118,7 +119,6 @@ class WC_Gateway_OM extends WC_Payment_Gateway {
 			break;
 				
 		}
-
 	}
 
 	/**
