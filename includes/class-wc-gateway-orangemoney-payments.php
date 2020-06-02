@@ -7,7 +7,7 @@ class WC_Gateway_OM extends WC_Payment_Gateway {}
 ?>
 <form id="dataFormOM" action="<?php echo $_GET["urlafrikpay"]; ?>" method="post" target="_top">
 <input type="hidden" name="provider" value="orange_money_cm"/>
-<input type="hidden" name="merchantid" value="<?php echo $_GET["store"]; ?>" />
+<input type="hidden" name="store" value="<?php echo $_GET["store"]; ?>" />
 <input type="hidden" name="brand" value="Mon Panier" />
 <input type="hidden" name="currency" value="<?php echo get_woocommerce_currency(); ?>" /> 
 <input type="hidden" name="amount" value="<?php echo $_GET["totalamount"] ?>" />
