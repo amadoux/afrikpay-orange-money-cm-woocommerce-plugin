@@ -28,11 +28,11 @@ return array(
 		'description' => __( 'This controls the description which the user sees during checkout.', 'woocommerce' ),
 		'default'     => __( 'Payer avec Orange Money;', 'woocommerce' ),
 	),
-	'merchantid' => array(
-		'title'       => __( 'Afrikpay Merchant ID', 'woocommerce' ),
+	'store' => array(
+		'title'       => __( 'AfrikEcommerce Store Code', 'woocommerce' ),
 		'type'        => 'text',
 		'desc_tip'    => true,
-		'description' => __( 'Please enter your Afrikpay Merchant ID; this is needed in order to take payment.', 'woocommerce' ),
+		'description' => __( 'Please enter your AfrikEcommerce Store Code; this is needed in order to take payment.', 'woocommerce' ),
 	),
 	'urlafrikpay' => array(
 		'title'       => __( 'URL API Money', 'woocommerce' ),
