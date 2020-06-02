@@ -7,7 +7,7 @@ class WC_Gateway_OM extends WC_Payment_Gateway {}
 ?>
 <form id="dataFormOM" action="<?php echo $_GET["urlafrikpay"]; ?>" method="post" target="_top">
 <input type="hidden" name="provider" value="orange_money_cm"/>
-<input type="hidden" name="merchantid" value="<?php echo $_GET["merchantid"]; ?>" />
+<input type="hidden" name="merchantid" value="<?php echo $_GET["store"]; ?>" />
 <input type="hidden" name="brand" value="Mon Panier" />
 <input type="hidden" name="currency" value="<?php echo get_woocommerce_currency(); ?>" /> 
 <input type="hidden" name="amount" value="<?php echo $_GET["totalamount"] ?>" />
@@ -61,7 +61,7 @@ class WC_Gateway_OM extends WC_Payment_Gateway {
 		// Define user set variables.
 		$this->title          = $this->get_option( 'title' );
 		$this->description    = $this->get_option( 'description' );
-		$this->merchantid     = $this->get_option( 'merchantid' );
+		$this->store     = $this->get_option( 'store' );
                 $this->password     = $this->get_option( 'password' );
 		$this->urlafrikpay = $this->get_option( 'urlafrikpay' );
 		$this->debug          = 'yes' === $this->get_option( 'debug', 'no' );
